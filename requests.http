@@ -1,0 +1,37 @@
+### Works with the "REST Client" VS Code extension (humao.rest-client)
+
+### 1. Get all
+GET http://localhost:3000/api/students
+
+### 2. Create (201)
+POST http://localhost:3000/api/students
+Content-Type: application/json
+
+{ "rollNumber": "IT2404", "name": "Meera Gupta", "branch": "IT", "semester": 3, "email": "meera@example.com" }
+
+### 2b. Create - invalid body (400)
+POST http://localhost:3000/api/students
+Content-Type: application/json
+
+{ "rollNumber": "", "name": "X", "semester": "three", "email": "bad" }
+
+### 3. Get by id
+GET http://localhost:3000/api/students/201
+
+### 3b. Get by invalid id (404)
+GET http://localhost:3000/api/students/999
+
+### 4. Update
+PUT http://localhost:3000/api/students/201
+Content-Type: application/json
+
+{ "rollNumber": "CSE2401", "name": "Aarav Sharma", "branch": "CSE", "semester": 4, "email": "aarav.sharma@example.com" }
+
+### 5. Delete
+DELETE http://localhost:3000/api/students/203
+
+### 6. Filter by branch (case-insensitive)
+GET http://localhost:3000/api/students/filter?branch=cse
+
+### 6b. Filter - no match (200, [])
+GET http://localhost:3000/api/students/filter?branch=MECH
